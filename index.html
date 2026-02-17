@@ -245,18 +245,24 @@
       setTimeout(() => { petal.remove(); }, 8000);
     }
     
-    setInterval(createPetal, 400);
-    const gallery = document.querySelector(".gallery");
-    let position = 0;
+   const gallery = document.querySelector(".gallery");
 
-    function autoScroll() {
-      position += 2;   // 🔥 speed (increase = faster)
-      gallery.scrollLeft = position;
+let position = 0;
 
-      if (position >= gallery.scrollWidth - gallery.clientWidth) {
-        position = 0;
-      }
-    }
+function autoScroll(){
+
+position += 2;  
+
+gallery.scrollLeft = position;
+
+if(position >= gallery.scrollWidth - gallery.clientWidth){
+position = 0;
+}
+
+}
+
+setInterval(autoScroll, 20);
+
 
   </script>
 
@@ -297,10 +303,11 @@
 
     <div class="gallery">
       <img src="yagya3.jpg">
+      <img src="astro.jpg">
       <img src="yagya1.jpg">
       <img src="yagya2.jpg">
       <img src="students.jpg">
-      <img src="astro.jpg">
+    
 
     </div>
     <audio id="bellSound" autoplay>
