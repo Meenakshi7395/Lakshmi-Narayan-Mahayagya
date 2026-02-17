@@ -24,6 +24,7 @@
         url("yagya1.jpg");
       background-size: cover;
       background-position: center;
+      touch-action: manipulation;
     }
 
 
@@ -190,6 +191,14 @@
       z-index: 999;
     }
 
+    .gallery.img {
+      display: flex;
+      overflow: hidden;
+      gap: 10px;
+      padding: 12px;
+      scroll-behavior: smooth;
+    }
+
     .petal {
       position: absolute;
       top: -20px;
@@ -235,11 +244,21 @@
 
       setTimeout(() => { petal.remove(); }, 8000);
     }
-
+    
     setInterval(createPetal, 400);
+    const gallery = document.querySelector(".gallery");
+    let position = 0;
+
+    function autoScroll() {
+      position += 2;   // 🔥 speed (increase = faster)
+      gallery.scrollLeft = position;
+
+      if (position >= gallery.scrollWidth - gallery.clientWidth) {
+        position = 0;
+      }
+    }
 
   </script>
-
 
 
   <div class="poster">
@@ -281,6 +300,7 @@
       <img src="yagya1.jpg">
       <img src="yagya2.jpg">
       <img src="students.jpg">
+      <img src="astro.jpg">
 
     </div>
     <audio id="bellSound" autoplay>
